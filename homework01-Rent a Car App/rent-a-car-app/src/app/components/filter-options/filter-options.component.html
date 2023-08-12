@@ -1,0 +1,11 @@
+<div class="filterDiv">
+  <button (click)="filterAvailableCars()">Show Available</button>
+  <button (click)="filterRentedCars()">Show Rented</button>
+  <button (click)="resetCars()">Reset</button>
+</div>
+<div class="divContainer" *ngIf="noAvailableCars">
+  <h1>No cars available for rent</h1>
+</div>
+<div class="divContainer" *ngIf="available">
+  <h1>All cars are available</h1>
+</div>

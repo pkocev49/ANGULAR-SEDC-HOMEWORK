@@ -1,0 +1,23 @@
+img {
+  width: 380px;
+  height: 250px;
+  border-radius: 10px;
+}
+
+.carsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 100px;
+}
+
+.carContainer {
+  border: 2px solid gray;
+  border-radius: 10px;
+  padding: 25px;
+}
+button {
+  padding: 10px;
+  width: 100px;
+  border-radius: 10px;
+}
