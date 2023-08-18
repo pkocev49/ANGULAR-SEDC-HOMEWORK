@@ -1,0 +1,32 @@
+<app-filter-options
+  (carsToRent)="onAvailableCars()"
+  (carsToReturn)="onRentedCars()"
+  (reset)="onResetCars()"
+></app-filter-options>
+
+<section class="carsContainer">
+  <div class="carContainer" *ngFor="let car of cars_list; index as i">
+    <h4>{{ i + 1 }}.Model:{{ car.model }}</h4>
+    <p>Engine:{{ car.engineType }}</p>
+    <p>Year Of Production:{{ car.yearOfProduction }}</p>
+    <p>Price To Rend:{{ car.priceToRent }}$</p>
+    <p *ngIf="car.isRented === 'NOT_RENTED'" [ngStyle]="availableColor(car)">
+      Available
+    </p>
+    <img src="{{ car.image }}" />
+    <div class="btnDiv">
+      <button (click)="rentCar(car.id)" *ngIf="car.isRented === 'NOT_RENTED'">
+        Rent
+      </button>
+      <button (click)="returnCar(car.id)" *ngIf="car.isRented === 'IS_RENTED'">
+        Return
+      </button>
+    </div>
+  </div>
+</section>
+<div class="divContainer" *ngIf="noAvailableCars">
+  <h1>No cars available for rent</h1>
+</div>
+<div class="divContainer" *ngIf="available">
+  <h1>All cars are available</h1>
+</div>

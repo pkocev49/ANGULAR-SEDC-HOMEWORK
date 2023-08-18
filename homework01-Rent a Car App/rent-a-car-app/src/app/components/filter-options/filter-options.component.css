@@ -1,0 +1,11 @@
+.filterDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+button {
+  padding: 10px;
+  border-radius: 10px;
+  width: 120px;
+  border-color: gray;
+}

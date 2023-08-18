@@ -1,0 +1,10 @@
+<h1>{{ header }}</h1>
+<h2>{{ subHeader }}</h2>
+
+<app-cars-list
+  [cars_list]="cars"
+  (carIdToRent)="onRentCar($event)"
+  (carIdToReturn)="onReturnCar($event)"
+  [filtered_cars]="cars"
+  [cars_list_two]="cars"
+></app-cars-list>
