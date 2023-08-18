@@ -31,7 +31,7 @@ export class AppComponent {
       yearOfProduction: '2019',
       priceToRent: 90,
       image: 'https://www.auto-data.net/images/f29/file7503984.jpg',
-      isRented: CarIsRented.NOR_RENTED,
+      isRented: CarIsRented.NOT_RENTED,
     },
     {
       id: 3,
@@ -41,7 +41,7 @@ export class AppComponent {
       priceToRent: 110,
       image:
         'https://images.wapcar.my/file1/9acfb914481640e293cd42204fe9f3b4_1200.jpg',
-      isRented: CarIsRented.NOR_RENTED,
+      isRented: CarIsRented.NOT_RENTED,
     },
     {
       id: 4,
@@ -55,7 +55,7 @@ export class AppComponent {
   ];
   onRentCar = (carId: number) => {
     this.cars = this.cars.map((car) => {
-      if (car.id === carId && car.isRented === CarIsRented.NOR_RENTED) {
+      if (car.id === carId && car.isRented === CarIsRented.NOT_RENTED) {
         return {
           ...car,
           isRented: CarIsRented.IS_RENTED,
@@ -69,7 +69,7 @@ export class AppComponent {
       if (car.id === carId && car.isRented === CarIsRented.IS_RENTED) {
         return {
           ...car,
-          isRented: CarIsRented.NOR_RENTED,
+          isRented: CarIsRented.NOT_RENTED,
         };
       }
       return car;

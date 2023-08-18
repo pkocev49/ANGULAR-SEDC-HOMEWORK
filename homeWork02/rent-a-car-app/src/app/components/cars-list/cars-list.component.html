@@ -1,13 +1,20 @@
 <app-filter-options
-  (carsToRent)="onAvailableCars($event)"
-  (carsToReturn)="onRentedCars($event)"
-  (reset)="onResetCars($event)"
-  [resetCar]="resetCarOne"
-  [availableCars]="availableCarsOne"
-  [rentedCars]="rentedCarsOne"
+  (carsToRent)="onAvailableCars()"
+  (carsToReturn)="onRentedCars()"
+  (reset)="onResetCars()"
 ></app-filter-options>
+<div class="selectDiv">
+  <label for="sort">Sort Cars</label>
+  <select name="sort" id="sort" [(ngModel)]="model">
+    <option value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+  </select>
+</div>
 <section class="carsContainer">
-  <div class="carContainer" *ngFor="let car of cars_list; index as i">
+  <div
+    class="carContainer"
+    *ngFor="let car of cars_list | sortPipe : model; index as i"
+  >
     <h4>{{ i + 1 }}.Model:{{ car.model }}</h4>
     <p>Engine:{{ car.engineType }}</p>
     <p>Year Of Production:{{ car.yearOfProduction }}</p>
@@ -26,3 +33,9 @@
     </div>
   </div>
 </section>
+<div class="divContainer" *ngIf="noAvailableCars">
+  <h1>No cars available for rent</h1>
+</div>
+<div class="divContainer" *ngIf="available">
+  <h1>All cars are available</h1>
+</div>

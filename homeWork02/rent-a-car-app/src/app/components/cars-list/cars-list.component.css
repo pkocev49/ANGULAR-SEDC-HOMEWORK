@@ -21,3 +21,25 @@ button {
   width: 100px;
   border-radius: 10px;
 }
+.divContainer {
+  text-align: center;
+  margin-top: 200px;
+}
+
+select {
+  padding: 10px;
+  border-radius: 10px;
+  width: 120px;
+
+  /* margin-left: 100px; */
+}
+
+.selectDiv {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+}
+label {
+  margin-left: 20px;
+  font-size: 1.1rem;
+}
