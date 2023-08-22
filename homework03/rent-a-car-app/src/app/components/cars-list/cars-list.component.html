@@ -1,0 +1,31 @@
+<app-filter-options></app-filter-options>
+<div class="selectDiv">
+  <label for="sort">Sort Cars</label>
+  <select name="sort" id="sort" [(ngModel)]="model">
+    <option value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+  </select>
+</div>
+<section class="carsContainer">
+  <div *ngFor="let car of cars | sortPipe : model" class="carContainer">
+    <h4>Model:{{ car.model }}</h4>
+    <p>Engine:{{ car.engineType }}</p>
+    <p>Year Of Production:{{ car.yearOfProduction }}</p>
+    <p>Price To Rend:{{ car.priceToRent }}$</p>
+    <p *ngIf="car.isRented === 'NOT_RENTED'" [ngStyle]="onColorChange(car)">
+      Available
+    </p>
+    <img src="{{ car.image }}" />
+    <div class="btnDiv">
+      <button *ngIf="car.isRented === 'NOT_RENTED'" (click)="onRentCar(car.id)">
+        Rent
+      </button>
+      <button
+        *ngIf="car.isRented === 'IS_RENTED'"
+        (click)="onReturnCar(car.id)"
+      >
+        Return
+      </button>
+    </div>
+  </div>
+</section>
