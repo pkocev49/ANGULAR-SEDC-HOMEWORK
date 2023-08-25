@@ -1,0 +1,18 @@
+<section class="product-section">
+  <div class="allProducts" *ngFor="let product of products">
+    <div class="product-card">
+      <h2 class="product-name">{{ product.name }}</h2>
+      <h3 class="product-description">{{ product.description }}</h3>
+      <p class="product-price">Price: {{ product.price }}</p>
+      <p class="product-category">Category: {{ product.category }}</p>
+      <p class="product-stock">Stock: {{ product.stock }}</p>
+      <p *ngIf="!product.stock">Out of stock</p>
+      <button
+        (click)="onButtonClick(product.id)"
+        [disabled]="isButtonDisabled(product.id)"
+      >
+        Order
+      </button>
+    </div>
+  </div>
+</section>
