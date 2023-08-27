@@ -1,0 +1,109 @@
+<form [formGroup]="addProductForm" class="product-form">
+  <div class="form-group">
+    <label for="name" class="form-label">Name:</label>
+    <input
+      type="text"
+      formControlName="name"
+      id="name"
+      class="form-input"
+      placeholder="Enter Product Name"
+    />
+    <span
+      *ngIf="
+        addProductForm.get('name')?.touched &&
+        addProductForm.get('name')?.hasError('required')
+      "
+    >
+      The product name is required!
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label for="description" class="form-label">Description:</label>
+    <input
+      type="text"
+      formControlName="description"
+      id="description"
+      class="form-input"
+      placeholder="Enter description"
+    />
+    <span
+      *ngIf="
+        addProductForm.get('description')?.touched &&
+        addProductForm.get('description')?.hasError('required')
+      "
+    >
+      The product description is required!
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label for="price" class="form-label">Price:</label>
+    <input
+      type="number"
+      formControlName="price"
+      id="price"
+      class="form-input"
+      placeholder="Enter price"
+    />
+    <span
+      *ngIf="
+        addProductForm.get('price')?.touched &&
+        addProductForm.get('price')?.hasError('required')
+      "
+    >
+      The product price is required!
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label for="category" class="form-label">Category:</label>
+    <input
+      type="text"
+      formControlName="category"
+      id="category"
+      class="form-input"
+      placeholder="Enter category"
+    />
+    <span
+      *ngIf="
+        addProductForm.get('category')?.touched &&
+        addProductForm.get('category')?.hasError('required')
+      "
+    >
+      The product category is required!
+      <span>
+        <br />
+
+        <b>Supported categories:</b> <br />ELECTRONICS, CLOTHING, BOOKS, SPORTS
+      </span>
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="stock" class="form-label">Stock</label>
+    <input
+      type="number"
+      formControlName="stock"
+      id="stock"
+      class="form-input"
+      placeholder="enterAmount"
+    />
+    <span
+      *ngIf="
+        addProductForm.get('stock')?.touched &&
+        addProductForm.get('stock')?.hasError('required')
+      "
+    >
+      The product stock is required!
+    </span>
+  </div>
+
+  <button
+    (click)="onFormSubmit()"
+    [disabled]="!addProductForm.valid"
+    type="submit"
+    class="submit-button"
+  >
+    Submit
+  </button>
+</form>

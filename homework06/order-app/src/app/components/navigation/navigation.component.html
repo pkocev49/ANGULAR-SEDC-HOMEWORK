@@ -1,0 +1,49 @@
+<header>
+  <div class="header-container">
+    <h1>My Order App</h1>
+    <nav>
+      <ul>
+        <li>
+          <a
+            class="nav-link"
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            class="nav-link"
+            routerLink="/products"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Products</a
+          >
+        </li>
+        <li>
+          <a
+            class="nav-link"
+            routerLink="/my-orders"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >My Orders</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" routerLink="/about" routerLinkActive="active"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            class="nav-link"
+            routerLink="/add-product"
+            routerLinkActive="active"
+            >Add Product</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
