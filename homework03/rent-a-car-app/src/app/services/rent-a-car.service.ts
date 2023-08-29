@@ -7,29 +7,33 @@ import { CarIsRented } from '../interfaces/car.isRented.enum';
   providedIn: 'root',
 })
 export class RentACarService {
+  // Initialize the car data using CARS_DATA constant
   cars: Car[] = CARS_DATA;
-  cars_list_two: Car[] = [...this.cars];
-  filtered_cars: Car[] = [];
 
+  // Define a constant color for available cars
   private _GREEN = 'lightgreen';
-  _selectedCars = new EventEmitter<Car>();
-  _availableCars = new EventEmitter<Car[]>();
-  _rentedCars = new EventEmitter<Car[]>();
 
-  // Simulate an API call or any asynchronous operation to get data
+  // Define EventEmitter instances for communication with components
+  _selectedCars = new EventEmitter<Car>();
+  _cars = new EventEmitter<Car[]>();
+
+  // Simulate an API call or asynchronous operation to get data
   // For demonstration purposes, directly assigning CARS_DATA here
 
+  // Get all cars from the service
   getAllCars = () => {
     return this.cars;
   };
 
-  availableColor = (cars: Car) => {
-    if (cars.isRented === CarIsRented.NOT_RENTED) {
-      return { color: this._GREEN };
+  // Determine the color of a car based on its availability
+  availableColor = (car: Car) => {
+    if (car.isRented === CarIsRented.NOT_RENTED) {
+      return { color: this._GREEN }; // Return green color
     }
-
-    return { color: 'inherit' };
+    return { color: 'inherit' }; // Return default color
   };
+
+  // Rent a car by changing its availability status
   onRentCarFromService = (carId: number) => {
     this.cars = this.cars.map((car) => {
       if (car.id === carId && car.isRented === CarIsRented.NOT_RENTED) {
@@ -40,7 +44,11 @@ export class RentACarService {
       }
       return car;
     });
+    // Emit the updated car list to components
+    this._cars.emit(this.cars);
   };
+
+  // Return a rented car by changing its availability status
   onReturnCarFromService = (carId: number) => {
     this.cars = this.cars.map((car) => {
       if (car.id === carId && car.isRented === CarIsRented.IS_RENTED) {
@@ -51,22 +59,30 @@ export class RentACarService {
       }
       return car;
     });
+    // Emit the updated car list to components
+    this._cars.emit(this.cars);
   };
 
+  // Filter and emit available cars
   onAvailableCars = () => {
-    this.filtered_cars = this.cars_list_two.filter(
+    const filteredCars = this.cars.filter(
       (car) => car.isRented === CarIsRented.NOT_RENTED
     );
-
-    this._availableCars.emit(this.cars_list_two);
-    this.cars = this.filtered_cars;
+    // Emit the filtered car list to components
+    this._cars.emit(filteredCars);
   };
+
+  // Filter and emit rented cars
   onRentedCars = () => {
-    this.filtered_cars = this.cars_list_two.filter(
+    const filteredCars = this.cars.filter(
       (car) => car.isRented === CarIsRented.IS_RENTED
     );
+    // Emit the filtered car list to components
+    this._cars.emit(filteredCars);
+  };
 
-    this._rentedCars.emit(this.cars_list_two);
-    this.cars = this.filtered_cars;
+  // Reset filters and emit the original car list
+  onResetFilters = () => {
+    this._cars.emit(this.cars);
   };
 }

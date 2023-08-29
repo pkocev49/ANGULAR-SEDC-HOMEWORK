@@ -16,15 +16,17 @@ import { RentACarService } from 'src/app/services/rent-a-car.service';
   templateUrl: './cars-list.component.html',
   styleUrls: ['./cars-list.component.css'],
 })
-export class CarsListComponent implements DoCheck {
+export class CarsListComponent implements OnInit {
   @Input()
   cars: Car[] = [];
   selectedCarToRent: number | undefined;
 
   constructor(private readonly carsService: RentACarService) {}
-  ngDoCheck(): void {
+  ngOnInit(): void {
     this.cars = this.carsService.getAllCars();
-    console.log('cars', this.cars);
+    this.carsService._cars.subscribe((cars) => {
+      this.cars = cars;
+    });
   }
 
   model: 'asc' | 'desc' = 'asc';
