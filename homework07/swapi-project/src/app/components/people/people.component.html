@@ -1,0 +1,11 @@
+<div class="people-container">
+  <div class="loader" *ngIf="peopleData.length === 0"></div>
+  <div class="people-card" *ngFor="let person of peopleData">
+    <h1>Name:{{ person.name }}</h1>
+    <hr />
+    <p>Gender:{{ person.gender }}</p>
+    <p>Birth Year:{{ person.birth_year }}</p>
+    <p>Height:{{ person.height }}</p>
+    <p>Mass:{{ person.mass }}</p>
+  </div>
+</div>

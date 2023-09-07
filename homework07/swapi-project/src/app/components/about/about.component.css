@@ -1,0 +1,14 @@
+.imgDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img{
+    width: 900px;
+    border-radius: 10px;
+}
+
+a{
+    text-decoration: none;
+}
