@@ -1,0 +1,38 @@
+<header>
+  <nav>
+    <div class="">
+      <h1>Posts App</h1>
+
+      <ul>
+        <li
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Home
+        </li>
+        <li
+          routerLink="/posts"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Posts
+        </li>
+        <li
+          routerLink="/create-post"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Create Post
+        </li>
+        <li
+          routerLink="/about"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          About
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
