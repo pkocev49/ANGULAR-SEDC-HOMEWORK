@@ -1,0 +1,59 @@
+@keyframes slide-in {
+    0% {
+      transform: translateY(300%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+
+/* Styles for the form container */
+.post-form {
+    max-width: 400px;
+    margin: 0 auto;
+    animation: slide-in 1s ease forwards;
+
+  }
+  
+  /* Styles for form labels */
+  .form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Styles for form inputs and textarea */
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Style the submit button */
+  .form-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style the success message */
+  .success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+  }

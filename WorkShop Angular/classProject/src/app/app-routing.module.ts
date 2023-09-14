@@ -5,12 +5,14 @@ import { PostsComponent } from './components/posts/posts.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'posts', component: PostsComponent },
   { path: 'create-post', component: CreatePostComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'edit-post/:id', component: EditPostComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

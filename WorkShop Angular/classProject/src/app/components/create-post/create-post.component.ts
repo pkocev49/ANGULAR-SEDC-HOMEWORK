@@ -3,6 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Post } from 'src/app/interfaces/post.interface';
 import { PostsService } from 'src/app/services/posts.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.state';
+import { createPost } from 'src/app/store/posts/posts.actions';
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
@@ -12,10 +15,12 @@ export class CreatePostComponent implements OnInit {
   successMessage: string = '';
   constructor(
     private readonly postService: PostsService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly store: Store<AppState>
   ) {}
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
+
     this.initForm();
   }
   createPostForm: FormGroup;
@@ -29,11 +34,20 @@ export class CreatePostComponent implements OnInit {
   };
 
   onSubmit = () => {
-    const { author, title, content, likes } = this.createPostForm.value;
-    this.postService.createPost(author, title, content, likes);
+    const { title, author, content, likes } = this.createPostForm.value;
+    this.store.dispatch(
+      createPost({
+        title: title,
+        author: author,
+
+        content: content,
+        likes: likes,
+      })
+    );
     this.createPostForm.reset();
-    this.successMessage = 'Post created successfully!';
+    this.successMessage = 'Post created successfully';
   };
+
   onClickBack() {
     this.router.navigate(['/posts']);
   }

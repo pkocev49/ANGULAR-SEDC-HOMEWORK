@@ -1,15 +1,7 @@
 <main>
-  <h2>Create a Post</h2>
-  <form [formGroup]="createPostForm" class="post-form">
+  <h2>Edit Post</h2>
+  <form [formGroup]="editPostForm" class="post-form">
     <h3 class="success-message">{{ successMessage }}</h3>
-    <label for="author" class="form-label">Author</label>
-    <input
-      type="text"
-      id="author"
-      formControlName="author"
-      placeholder="John Doe"
-      class="form-input"
-    />
 
     <label for="title" class="form-label">Title</label>
     <input
@@ -28,9 +20,8 @@
       placeholder="Content...."
       class="form-textarea"
     ></textarea>
-    <!-- <div formControlName="likes">Likes:</div> -->
-    <button (click)="onSubmit()" (click)="onClickBack()" class="form-button">
-      Create Post
+    <button (click)="onEdit()" (click)="onClickBack()" class="form-button">
+      Edit Post
     </button>
   </form>
 </main>

@@ -25,20 +25,29 @@ export class PostsService {
   };
 
   createPost = (
-    author: string,
     title: string,
+    author: string,
     content: string,
     likes: number
   ) => {
     const postToBeCreated = {
-      author: author,
       title: title,
+      author: author,
       content: content,
       likes: likes,
       timestamp: Timestamp.fromDate(new Date()),
     };
     const postCollection = collection(this.firestore, 'posts');
     return from(addDoc(postCollection, postToBeCreated));
+  };
+
+  editPost = (id: string, title: string, content: string) => {
+    const postRef = doc(this.firestore, `posts/${id}`);
+    const updateData = {
+      title: title,
+      content: content,
+    };
+    return from(updateDoc(postRef, updateData));
   };
   removePost = (id: string) => {
     const docRef = doc(this.firestore, `posts/${id}`);

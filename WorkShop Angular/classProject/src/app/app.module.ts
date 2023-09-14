@@ -14,7 +14,13 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FirestoreModule } from '@angular/fire/firestore'; // Import AngularFirestoreModule
+import { FirestoreModule } from '@angular/fire/firestore';
+import { EditPostComponent } from './components/edit-post/edit-post.component'; // Import AngularFirestoreModule
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './store/posts/posts.reducer';
+import { reducers } from './store/app.state';
+import { EffectsModule } from '@ngrx/effects';
+import { PostsEffects } from './store/posts/posts.effects';
 const firebaseConfig = {
   apiKey: 'AIzaSyC3sRaRDzeLGblI0nhjGVPYb4G3MGmm1v0',
   authDomain: 'post-page-17efe.firebaseapp.com',
@@ -33,6 +39,7 @@ const firebaseConfig = {
     NavigationComponent,
     CreatePostComponent,
     NotFoundComponent,
+    EditPostComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +50,8 @@ const firebaseConfig = {
     FormsModule,
     ReactiveFormsModule,
     FirestoreModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([PostsEffects]),
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
